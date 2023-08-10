@@ -2,7 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        large: "1440px",
+      },
+      backgroundImage: {
+        "first-svg": "url('/images/bg-header-desktop.svg')",
+        "second-svg": "url('/images/bg-header-mobile.svg')",
+      },
+    },
   },
   plugins: [],
 };

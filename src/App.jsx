@@ -1,17 +1,14 @@
 import Header from "./components/Header";
-import Main from "./components/Main";
+import SkilsLine from "./components/SkilsLine";
+import CardList from "./components/CardList";
 import "./index.css";
 function App() {
   return (
-    <div className="flex-col">
-      <div className="border w-full h-56  ">
-        <Header />
-      </div>
-      <div>
-        <div>
-          <div>hi</div>
-        </div>
-      </div>
+    <div className=" flex flex-col items-center w-large h-screen">
+      <Header />
+
+      <SkilsLine />
+      <CardList />
     </div>
   );
 }
