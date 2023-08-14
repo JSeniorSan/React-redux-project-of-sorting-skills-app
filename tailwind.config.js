@@ -4,11 +4,7 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        large: "1440px",
-      },
-      backgroundImage: {
-        "first-svg": "url('/images/bg-header-desktop.svg')",
-        "second-svg": "url('/images/bg-header-mobile.svg')",
+        desktop: "110%",
       },
     },
   },

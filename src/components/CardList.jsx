@@ -1,22 +1,12 @@
 import React from "react";
-import "../index.css";
+// import "../index.css";
 import file from "../mock/data.json";
+import styles from "../style/index.module.scss";
 
 export default function CardList() {
   console.log(file);
-  const newComponent = (
-    <div
-      className="p-1 rounded-lg text-white
-     bg-teal-600 text-xs font-medium"
-    >
-      NEW!
-    </div>
-  );
-  const fetureComponent = (
-    <div className="bg-black rounded-lg text-white font-medium p-1 text-xs">
-      FEATURED
-    </div>
-  );
+  const newComponent = <div className={styles.component}>NEW!</div>;
+  const fetureComponent = <div className={styles.component}>FEATURED</div>;
   const newFile = file.map((obj) => {
     const btnToolsFn = () => {
       const newArr = obj.tools.map((skill, i) => {
@@ -24,10 +14,7 @@ export default function CardList() {
           return null;
         } else {
           return (
-            <button
-              key={i}
-              className="text-teal-600 p-2 bg-gray-100 hover:text-gray-100 hover:bg-teal-600 h-8 text-sm flex flex-row justify-center items-center rounded-md"
-            >
+            <button key={i} className={styles.btn}>
               {skill}
             </button>
           );
@@ -42,10 +29,7 @@ export default function CardList() {
           return null;
         } else {
           return (
-            <button
-              key={i}
-              className="text-teal-600 p-2 bg-gray-100 hover:text-gray-100 hover:bg-teal-600 h-8 text-sm flex flex-row justify-center items-center rounded-md"
-            >
+            <button key={i} className={styles.btn}>
               {language}
             </button>
           );
@@ -56,57 +40,38 @@ export default function CardList() {
 
     return (
       <div
-        className="flex w-2/3 p-4 h-30 border shadow-lg rounded-md hover:transition-all hover:shadow-xl z-30 bg-white"
+        className={obj.featured ? styles.active : styles.cardWrapper}
         key={obj.id}
-        style={{ borderLeft: obj.featured ? "5px solid green" : null }}
       >
-        <div className="flex flex-row w-full justify-between h-20">
-          <div className="flex justify-around gap-8">
-            <div className="rounded-full w-20 border relative">
-              <img
-                src={obj.logo}
-                alt="dgd"
-                className="absolute h-full w-full z-0"
-              ></img>
+        <div className={styles.content}>
+          <div className={styles.firstContent}>
+            <div className={styles.avatar}>
+              <img src={obj.logo} alt="avatar" className={styles.image}></img>
             </div>
-            <div className="flex flex-col gap-1">
-              <div className="flex flex-row gap-2">
-                <div className="text-xs text-teal-600 font-bold flex items-center">
-                  {obj.company}
-                </div>
-                <div className="flex items-center">
+            <div className={styles.mainInfo}>
+              <div className={styles.firstRow}>
+                <div className={styles.company}>{obj.company}</div>
+                <div className={styles.new}>
                   {obj.new ? newComponent : null}
                 </div>
 
-                <div className="flex items-center">
+                <div className={styles.featured}>
                   {obj.featured ? fetureComponent : null}
                 </div>
               </div>
-              <div className="font-bold text-base text-black hover:text-teal-600 cursor-default">
-                {obj.position}
-              </div>
-              <div className="flex flex-row gap-2 items-center">
-                <div className="text-xs text-gray-400 font-normal ">
-                  {obj.postedAt}
-                </div>
-                <div className="text-xs text-gray-400 font-normal ">·</div>
-                <div className="text-xs text-gray-400 font-normal ">
-                  {obj.contract}
-                </div>
-                <div className="text-xs text-gray-400 font-normal ">·</div>
-                <div className="text-xs text-gray-400 font-normal ">
-                  {obj.location}
-                </div>
+              <div className={styles.secondRow}>{obj.position}</div>
+              <div className={styles.grayColorTextDiv}>
+                <div className={styles.gray}>{obj.postedAt}</div>
+                <div className={styles.gray}>·</div>
+                <div className={styles.gray}>{obj.contract}</div>
+                <div className={styles.gray}>·</div>
+                <div className={styles.gray}>{obj.location}</div>
               </div>
             </div>
           </div>
-          <div className="flex flex-row justify-center items-center gap-4">
-            <button className="text-teal-600 p-2 bg-gray-100 hover:text-gray-100 hover:bg-teal-600 h-8 text-sm flex flex-row justify-center items-center rounded-md">
-              {obj.role}
-            </button>
-            <button className="text-teal-600 p-2 bg-gray-100 hover:text-gray-100 hover:bg-teal-600 h-8 text-sm flex flex-row justify-center items-center rounded-md">
-              {obj.level}
-            </button>
+          <div className={styles.secondContent}>
+            <button className={styles.btn}>{obj.role}</button>
+            <button className={styles.btn}>{obj.level}</button>
             {btnLanguagesFn()}
             {btnToolsFn()}
           </div>
@@ -114,9 +79,5 @@ export default function CardList() {
       </div>
     );
   });
-  return (
-    <div className="w-full h-5/6 flex flex-col gap-10 items-center m-5 bg-teal-100">
-      {newFile}
-    </div>
-  );
+  return <div className={styles.listWrapper}>{newFile}</div>;
 }

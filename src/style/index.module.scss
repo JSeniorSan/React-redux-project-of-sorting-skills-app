@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "filterLine.module";
+@import "cardSpace.module";
+@import "mixins.module";
+
+.bg {
+  @apply flex flex-col items-center w-full h-full bg-teal-100;
+}
+
+.head {
+  @apply flex min-w-full p-0 m-0 flex-shrink;
+}

@@ -1,0 +1,11 @@
+@import "mixins.module";
+.divFilterLine {
+  @apply p-1 w-full -translate-y-8 flex justify-center;
+  @include adaptive() {
+    @apply justify-start pl-4;
+  }
+
+  .filterLine {
+    @apply h-20 bg-white z-10 rounded w-2/3 shadow-teal-200 shadow-lg border-teal-100;
+  }
+}
