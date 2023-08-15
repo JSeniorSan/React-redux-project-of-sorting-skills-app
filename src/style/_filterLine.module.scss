@@ -6,6 +6,6 @@
   }
 
   .filterLine {
-    @apply h-20 bg-white z-10 rounded w-2/3 shadow-teal-200 shadow-lg border-teal-100;
+    @apply h-20 bg-white z-10 rounded w-2/3 shadow-teal-200 shadow-lg border-teal-100 flex flex-row gap-2 justify-start items-center p-2 pl-4 flex-wrap;
   }
 }

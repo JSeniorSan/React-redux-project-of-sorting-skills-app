@@ -98,3 +98,14 @@
   @extend .cardWrapper;
   @apply border-l-4 border-emerald-400 shadow-md;
 }
+
+.flexBtnX {
+  @apply flex flex-row;
+
+  .btnActive {
+    @apply text-teal-600 p-2 bg-gray-100  h-9 flex flex-row justify-center items-center rounded-none pr-5 text-lg font-semibold;
+  }
+  .x {
+    @apply h-9 w-auto border font-bold text-white text-lg bg-teal-600 p-2 rounded-r flex justify-center items-center hover:bg-black;
+  }
+}
