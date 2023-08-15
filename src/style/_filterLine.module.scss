@@ -2,7 +2,7 @@
 .divFilterLine {
   @apply p-1 w-full -translate-y-8 flex justify-center;
   @include adaptive() {
-    @apply justify-start pl-4;
+    @apply w-full px-6;
   }
 
   .filterLine {

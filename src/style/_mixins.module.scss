@@ -1,4 +1,4 @@
-@mixin adaptive($minWidth: 470px) {
+@mixin adaptive($minWidth: 1225px) {
   @media (min-width: $minWidth) {
     @content;
   }

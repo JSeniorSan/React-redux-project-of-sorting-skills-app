@@ -1,42 +1,31 @@
 import React from "react";
-// import "../index.css";
-import file from "../mock/data.json";
-import styles from "../style/index.module.scss";
+import { useSelector } from "react-redux";
 
+import styles from "../style/index.module.scss";
+import { selectAllPositions } from "../store/positiions/positions-selectors";
 export default function CardList() {
-  console.log(file);
+  const arr = useSelector(selectAllPositions);
+  console.log(arr);
   const newComponent = <div className={styles.component}>NEW!</div>;
   const fetureComponent = <div className={styles.component}>FEATURED</div>;
-  const newFile = file.map((obj) => {
-    const btnToolsFn = () => {
-      const newArr = obj.tools.map((skill, i) => {
-        if (obj.tools.length === 0) {
-          return null;
-        } else {
-          return (
-            <button key={i} className={styles.btn}>
-              {skill}
-            </button>
-          );
-        }
-      });
-      return newArr;
-    };
+  //
+  const newFile = arr.map((obj) => {
+    const allBtnArr = [].concat(
+      ...obj.tools,
+      ...obj.languages,
+      obj.level,
+      obj.role
+    );
 
-    const btnLanguagesFn = () => {
-      const newArr = obj.languages.map((language, i) => {
-        if (obj.languages.length === 0) {
-          return null;
-        } else {
-          return (
-            <button key={i} className={styles.btn}>
-              {language}
-            </button>
-          );
-        }
-      });
-      return newArr;
-    };
+    const btnSkillComponents = allBtnArr.map((skill, i) => {
+      return (
+        <button key={i} className={styles.btn}>
+          {skill}
+        </button>
+      );
+    });
+
+    console.log(allBtnArr);
 
     return (
       <div
@@ -69,12 +58,7 @@ export default function CardList() {
               </div>
             </div>
           </div>
-          <div className={styles.secondContent}>
-            <button className={styles.btn}>{obj.role}</button>
-            <button className={styles.btn}>{obj.level}</button>
-            {btnLanguagesFn()}
-            {btnToolsFn()}
-          </div>
+          <div className={styles.secondContent}>{btnSkillComponents}</div>
         </div>
       </div>
     );

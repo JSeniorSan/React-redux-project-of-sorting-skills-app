@@ -1,6 +1,7 @@
 import { createStore } from "redux";
-import { filterReducer } from "../store/filter/filter-redusers";
-export const store = createStore(filterReducer);
-
-// будет 2 редьюсера, нужен роутинг.
-// Идея: стор - дата список, нажатие на кнопку приводит к созданию экшена, котрый передаст массив с фильтруемыми компонентами, после чего в редьюрсере будет возврат стэйта, а в селекторе будет фильтроваться содержимое.
+import { rootReducer } from "./root-reducers";
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+export { store };

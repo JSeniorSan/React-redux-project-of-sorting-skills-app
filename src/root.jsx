@@ -4,11 +4,11 @@ import { store } from "./store/index";
 import App from "./App";
 function RootProviders() {
   return (
-    // <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </React.StrictMode>
-    // </Provider>
   );
 }
 export default RootProviders;
