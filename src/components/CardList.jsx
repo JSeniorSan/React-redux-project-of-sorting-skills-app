@@ -1,15 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
+import { addFilterAction } from "../store/filter/filter-actions";
+import { selectFilterPositions } from "../store/positiions/positions-selectors";
+import { selectFilterState } from "../store/filter/filter-selectors";
 import styles from "../style/index.module.scss";
-import { selectAllPositions } from "../store/positiions/positions-selectors";
 export default function CardList() {
-  const arr = useSelector(selectAllPositions);
-  console.log(arr);
+  const dispatch = useDispatch();
+  const filter = useSelector(selectFilterState);
+  const arrWithFilter = useSelector((state) => {
+    return selectFilterPositions(state, filter);
+  });
   const newComponent = <div className={styles.component}>NEW!</div>;
   const fetureComponent = <div className={styles.component}>FEATURED</div>;
   //
-  const newFile = arr.map((obj) => {
+  const newFile = arrWithFilter.map((obj) => {
     const allBtnArr = [].concat(
       ...obj.tools,
       ...obj.languages,
@@ -19,13 +23,21 @@ export default function CardList() {
 
     const btnSkillComponents = allBtnArr.map((skill, i) => {
       return (
-        <button key={i} className={styles.btn}>
+        <button
+          key={i}
+          className={styles.btn}
+          onClick={() => {
+            if (filter.includes(skill)) {
+              return;
+            } else {
+              return dispatch(addFilterAction(skill));
+            }
+          }}
+        >
           {skill}
         </button>
       );
     });
-
-    console.log(allBtnArr);
 
     return (
       <div

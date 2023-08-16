@@ -6,6 +6,14 @@
   }
 
   .filterLine {
-    @apply h-20 bg-white z-10 rounded w-2/3 shadow-teal-200 shadow-lg border-teal-100 flex flex-row gap-2 justify-start items-center p-2 pl-4 flex-wrap;
+    @apply h-full bg-white z-10 rounded w-2/3 shadow-teal-200 shadow-lg border-teal-100 flex flex-row justify-between items-center p-2;
+
+    .btnDiv {
+      @apply flex flex-row gap-2 flex-wrap;
+    }
+
+    .filterLine_clear {
+      @apply border-b text-base text-black font-light hover:text-teal-200;
+    }
   }
 }

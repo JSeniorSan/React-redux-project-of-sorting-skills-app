@@ -6,7 +6,7 @@
 @import "mixins.module";
 
 .bg {
-  @apply flex flex-col items-center w-full h-full bg-teal-100;
+  @apply flex flex-col items-center w-full h-full bg-teal-100 min-h-screen;
 }
 
 .head {

@@ -1,10 +1,16 @@
 import styles from "../style/_filterLine.module.scss";
-import UiBtn from "./UiBtn";
+import { useSelector } from "react-redux";
+import { selectFilterBtn } from "../store/filter/filter-selectors";
+import Clear from "./Clear";
 export default function SkilsLine() {
+  const arrFilterBtn = useSelector(selectFilterBtn);
+
   return (
     <div className={styles.divFilterLine}>
       <div className={styles.filterLine}>
-        <UiBtn />
+        <div className={styles.btnDiv}>{arrFilterBtn}</div>
+
+        <Clear />
       </div>
     </div>
   );
