@@ -104,9 +104,15 @@
   @apply flex flex-row;
 
   .btnActive {
-    @apply text-teal-600 p-2 bg-gray-100  h-9 flex flex-row justify-center items-center rounded-none pr-5 text-lg font-semibold;
+    @apply text-teal-600 p-2 bg-gray-100 h-6 flex flex-row justify-center items-center rounded-none pr-3 text-sm font-semibold;
+    @include adaptive(1000px) {
+      @apply h-9 pr-6;
+    }
   }
   .x {
-    @apply h-9 w-auto border font-bold text-white text-lg bg-teal-600 p-2 rounded-r flex justify-center items-center hover:bg-black;
+    @apply h-6 w-auto border font-bold text-white text-base bg-teal-600 p-2 rounded-r flex justify-center items-center hover:bg-black;
+    @include adaptive(1000px) {
+      @apply h-9;
+    }
   }
 }

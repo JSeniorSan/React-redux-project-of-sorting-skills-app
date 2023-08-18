@@ -11,4 +11,7 @@
 
 .head {
   @apply flex min-w-full p-0 m-0;
+  @include adaptive(1000px) {
+    @apply flex min-w-full p-0 m-0 h-auto;
+  }
 }
